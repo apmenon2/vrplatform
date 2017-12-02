@@ -1,0 +1,32 @@
+.pricing-table-container h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700; }
+
+.pricing-table-container h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300; }
+
+.pricing-table-container .pricing-table {
+  font-size: 12px;
+  text-align: center;
+  border-color: #ECE9E1 !important;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300; }
+  .pricing-table-container .pricing-table .empty-cell {
+    border-color: #ECE9E1 !important; }
+  .pricing-table-container .pricing-table h3 {
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400; }
+  .pricing-table-container .pricing-table img {
+    margin-bottom: 10px; }
+  .pricing-table-container .pricing-table .table-header {
+    height: 200px; }
+  .pricing-table-container .pricing-table .header-1 {
+    background-color: #99D6DD; }
+  .pricing-table-container .pricing-table .header-2 {
+    background-color: #ADF3D2; }
+  .pricing-table-container .pricing-table .header-3 {
+    background-color: #FB8A8C; }
+  .pricing-table-container .pricing-table .header-4 {
+    background-color: #FF7131; }

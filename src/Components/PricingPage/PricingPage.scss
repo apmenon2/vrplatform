@@ -1,0 +1,51 @@
+.pricing-table-container {
+
+	h1 {
+		font-family: 'Montserrat', sans-serif;
+		font-weight: 700;
+	}
+
+	h3 {
+		font-family: 'Montserrat', sans-serif;
+		font-weight: 300;
+	}
+
+	.pricing-table {
+		font-size: 12px;
+		text-align: center;
+		border-color: #ECE9E1 !important;
+		font-family: 'Montserrat', sans-serif;
+		font-weight: 300;
+		
+		.empty-cell {
+			border-color: #ECE9E1 !important;
+		}
+
+		h3 {
+			color: white;
+			font-family: 'Montserrat', sans-serif;
+			font-weight: 400;
+		}
+
+		img {
+			margin-bottom: 10px;
+		}
+
+		.table-header {
+			height: 200px;
+		}
+
+		.header-1 {
+			background-color: #99D6DD;
+		}
+		.header-2 {
+			background-color: #ADF3D2;
+		}
+		.header-3 {
+			background-color: #FB8A8C;
+		}
+		.header-4 {
+			background-color: #FF7131;
+		}
+	}
+}

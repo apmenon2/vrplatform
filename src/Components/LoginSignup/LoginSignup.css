@@ -1,0 +1,21 @@
+.login-signup-container {
+  background-color: #ECE9E1;
+  height: 100vh; }
+  .login-signup-container .login-image {
+    width: 40%;
+    margin: auto !important;
+    background-color: #F5A623; }
+  .login-signup-container .login-button {
+    margin-top: 20px; }
+  .login-signup-container h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400; }
+  .login-signup-container p {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300; }
+  .login-signup-container label {
+    text-align: left;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300; }
+  .login-signup-container .signup-buttons {
+    margin-top: 20px; }

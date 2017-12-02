@@ -1,0 +1,26 @@
+.upload-container {
+  display: block;
+  width: 128px;
+  height: 128px;
+  padding-top: 50px;
+  border-color: #3b5998;
+  border-style: dotted;
+  text-align: center; }
+
+.facebook {
+  border-color: #3B5998; }
+
+.instagram {
+  border-color: #cd486b; }
+
+.youtube {
+  border-color: #cc181e; }
+
+.avatar {
+  border-color: #F5A623; }
+
+label {
+  text-align: left; }
+
+.submit-info-button {
+  margin-top: 20px !important; }

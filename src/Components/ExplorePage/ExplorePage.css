@@ -1,0 +1,51 @@
+.explore-page-container .explore-page-sidebar {
+  padding: 0 !important; }
+
+.explore-page-container .explore-page-main-outer {
+  height: auto;
+  background-color: #ECE9E1; }
+
+.explore-page-container .headline {
+  margin-top: 30px !important;
+  color: grey;
+  text-align: left; }
+
+.carousel {
+  width: 90%;
+  margin: 0 auto; }
+  .carousel .slide-container {
+    height: 300px;
+    width: 200px;
+    padding: 5px;
+    position: relative; }
+    .carousel .slide-container .slide-background {
+      position: absolute;
+      height: 100%;
+      width: 100%; }
+    .carousel .slide-container .slide-info {
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      z-index: 1;
+      background: rgba(0, 0, 0, 0.3);
+      color: white;
+      text-align: left; }
+      .carousel .slide-container .slide-info .text {
+        position: absolute;
+        bottom: 0;
+        padding: 5px;
+        padding-bottom: 20px;
+        opacity: 1 !important; }
+      .carousel .slide-container .slide-info .slide-header {
+        color: white; }
+
+.category-cards {
+  padding: 10px !important; }
+  .category-cards .category-card {
+    width: 100%;
+    height: auto;
+    background-color: #FBFBF7 !important; }
+    .category-cards .category-card .card-divider {
+      border-color: #F5A623 !important; }
+    .category-cards .category-card p {
+      font-weight: 100; }

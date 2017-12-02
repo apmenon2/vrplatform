@@ -1,0 +1,39 @@
+.video-page-container .video-page-sidebar {
+  padding: 0 !important; }
+
+.video-page-container .inner-segment-group {
+  width: 90%;
+  margin: 0 auto; }
+
+.video-page-container .video-page-main-outer {
+  height: 140vh;
+  padding-right: 0 !important;
+  background-color: #ECE9E1; }
+  .video-page-container .video-page-main-outer .user-info {
+    width: 90%x;
+    height: 50px;
+    margin: 0 auto;
+    border-radius: 0 !important;
+    background-color: #373F49; }
+    .video-page-container .video-page-main-outer .user-info .user-image {
+      padding: 5px; }
+    .video-page-container .video-page-main-outer .user-info .user-name {
+      color: white; }
+    .video-page-container .video-page-main-outer .user-info i {
+      color: white; }
+    .video-page-container .video-page-main-outer .user-info .facebook-icon:hover {
+      color: #3B5998; }
+    .video-page-container .video-page-main-outer .user-info .instagram-icon:hover {
+      color: #cd486b; }
+    .video-page-container .video-page-main-outer .user-info .youtube-icon:hover {
+      color: #cc181e; }
+  .video-page-container .video-page-main-outer .video {
+    margin-top: 5%;
+    width: 80%;
+    height: 400px; }
+  .video-page-container .video-page-main-outer .video-info-container {
+    width: 80%;
+    margin: 0 auto; }
+    .video-page-container .video-page-main-outer .video-info-container .video-metrics i {
+      margin-left: 15px;
+      color: #F5A623; }

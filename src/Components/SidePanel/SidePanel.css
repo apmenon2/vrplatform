@@ -1,0 +1,38 @@
+.side-container {
+  position: fixed;
+  right: 0;
+  width: inherit; }
+  .side-container .side-panel {
+    height: 75vh;
+    background-color: #373F49;
+    padding: 10px !important;
+    padding-top: 20px !important;
+    overflow-y: scroll; }
+    .side-container .side-panel .comment-title {
+      color: white; }
+    .side-container .side-panel .panel-item {
+      margin-top: 20px; }
+      .side-container .side-panel .panel-item .item-thumbnail {
+        width: 90%; }
+      .side-container .side-panel .panel-item .info {
+        color: white;
+        margin-left: 10px;
+        font-weight: 100;
+        font-size: 11px; }
+        .side-container .side-panel .panel-item .info .break {
+          color: #F5A623; }
+    .side-container .side-panel .comment .comment-heading {
+      font-size: 13px;
+      padding: 5px 10px;
+      color: #F5A623 !important; }
+    .side-container .side-panel .comment .comment-body {
+      font-size: 12px;
+      line-height: 14px;
+      padding: 5px 10px; }
+  .side-container .new-comment {
+    height: 20vh;
+    background-color: #181C21; }
+    .side-container .new-comment .new-comment-field textarea {
+      border-radius: 0 !important; }
+    .side-container .new-comment .new-comment-submit {
+      border-radius: 0; }
