@@ -1,0 +1,11 @@
+.results-container {
+  background-color: #ECE9E1;
+  min-height: 100vh; }
+  .results-container .result .avatar-image {
+    height: 64px !important;
+    width: auto; }
+  .results-container .result .result-name {
+    margin-left: 20px;
+    font-size: 20px; }
+  .results-container .result .result-link {
+    color: white; }

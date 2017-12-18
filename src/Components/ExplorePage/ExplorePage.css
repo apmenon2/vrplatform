@@ -1,14 +1,13 @@
-.explore-page-container .explore-page-sidebar {
-  padding: 0 !important; }
-
-.explore-page-container .explore-page-main-outer {
-  height: auto;
-  background-color: #ECE9E1; }
-
-.explore-page-container .headline {
-  margin-top: 30px !important;
-  color: grey;
-  text-align: left; }
+.explore-page-container {
+  padding: 0 !important;
+  background-color: #ECE9E1;
+  min-height: 100vh; }
+  .explore-page-container .explore-page-main-outer {
+    height: auto; }
+  .explore-page-container .headline {
+    margin-top: 30px !important;
+    color: grey;
+    text-align: left; }
 
 .carousel {
   width: 90%;

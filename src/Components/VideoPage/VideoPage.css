@@ -1,3 +1,15 @@
+.video-page-container .videos-panel {
+  position: fixed;
+  height: inherit;
+  background-color: #373F49;
+  width: 100%;
+  text-align: center;
+  overflow-y: scroll; }
+  .video-page-container .videos-panel .video-thumbnail {
+    padding: 10px; }
+    .video-page-container .videos-panel .video-thumbnail .thumbnail-title {
+      color: white; }
+
 .video-page-container .video-page-sidebar {
   padding: 0 !important; }
 
@@ -8,6 +20,7 @@
 .video-page-container .video-page-main-outer {
   height: 140vh;
   padding-right: 0 !important;
+  padding-left: 0 !important;
   background-color: #ECE9E1; }
   .video-page-container .video-page-main-outer .user-info {
     width: 90%x;
@@ -33,7 +46,8 @@
     height: 400px; }
   .video-page-container .video-page-main-outer .video-info-container {
     width: 80%;
-    margin: 0 auto; }
+    margin: 0 auto;
+    padding-bottom: 30px; }
     .video-page-container .video-page-main-outer .video-info-container .video-metrics i {
       margin-left: 15px;
       color: #F5A623; }

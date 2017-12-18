@@ -17,22 +17,22 @@ class Landing extends Component {
 				<div className="landing-content">
 					<Grid centered>
 						<Grid.Column width={16} textAlign='center'>
-							<Image centered size='small' src={require('../../media/virtual-reality-yellow.svg')}/>
+							<Image centered size='small' src={require('../../media/dragonfly-yellow.svg')}/>
 							<h1>DISCOVER A NEW WAY TO EXPERIENCE THE WORLD AROUND YOU</h1>
 						</Grid.Column>
 						<Grid.Column width={3} textAlign='center'>
 							<Grid columns={3}>
 								<Grid.Column>
-									<Button className='login-button' inverted color='yellow'>
-										<Link to='/login'> LOGIN </Link>
+									<Button as={Link} to='/login' className='login-button' inverted color='yellow'>
+										LOGIN
 									</Button>
 								</Grid.Column>
 								<Grid.Column>
 									<Divider inverted vertical>Or</Divider>
 								</Grid.Column>
 								<Grid.Column>
-									<Button className='explore-button' inverted color='yellow'>
-										<Link to='/explore'> EXPLORE </Link>
+									<Button as={Link} to='/explore' className='explore-button' inverted color='yellow'>
+										EXPLORE 
 									</Button>
 								</Grid.Column>
 							</Grid>	

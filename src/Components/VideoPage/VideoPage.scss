@@ -1,4 +1,21 @@
 .video-page-container {
+
+	.videos-panel {
+		position: fixed;
+		height: inherit;
+		background-color: #373F49;
+		width: 100%;
+		text-align: center;
+		overflow-y: scroll;
+
+		.video-thumbnail {
+			padding: 10px;
+
+			.thumbnail-title {
+				color: white;
+			}
+		}
+	}
 	
 	.video-page-sidebar {
 		padding: 0 !important;		
@@ -12,6 +29,7 @@
 	.video-page-main-outer {
 		height: 140vh;
 		padding-right: 0 !important;
+		padding-left: 0 !important;
 		background-color: #ECE9E1;
 
 		.user-info {
@@ -55,6 +73,7 @@
 		.video-info-container {
 			width: 80%;
 			margin: 0 auto;
+			padding-bottom: 30px;
 
 			.video-metrics {
 				i {

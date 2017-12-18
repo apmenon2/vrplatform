@@ -27,3 +27,18 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+@font-face {
+  font-family: 'Bebas_Bold';
+  src: url('./media/fonts/BebasNeue Bold.ttf')
+}
+
+@font-face {
+  font-family: 'Bebas_Reg';
+  src: url('./media/fonts/BebasNeue Regular.ttf')
+}
+
+@font-face {
+  font-family: 'Bebas_Light';
+  src: url('./media/fonts/BebasNeue Light.ttf')
+}

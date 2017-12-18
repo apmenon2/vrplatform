@@ -9,7 +9,7 @@ class ExploreCarousel extends Component {
       dots: true,
       infinite: true,
       speed: 500,
-      slidesToShow: 2,
+      slidesToShow: 3,
       slidesToScroll: 1,
     };
     return (
@@ -21,48 +21,36 @@ class ExploreCarousel extends Component {
         	<div className="slide-info">
         		<div className="text">
         			<Header className='slide-header' as='h3'> UIUC ALMA MATER </Header>
-        			<p>
-        				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam elit purus, ultrices suscipit neque in, ultricies vulputate quam. Nulla vehicula.
-        			</p>
         		</div>
         	</div>
         </div>
         <div className="slide-container">
         	<div className="slide-background">
-        		<Image src={require('../../media/thumbnails/venice.png')} />
+        		<Image src={require('../../media/thumbnails/yellowstone.jpg')} />
         	</div>
         	<div className="slide-info">
         		<div className="text">
-        			<Header className='slide-header' as='h3'> VENICE </Header>
-        			<p>
-        				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam elit purus, ultrices suscipit neque in, ultricies vulputate quam. Nulla vehicula.
-        			</p>
+        			<Header className='slide-header' as='h3'> YELLOWSTONE </Header>
         		</div>
         	</div>
         </div>
         <div className="slide-container">
         	<div className="slide-background">
-        		<Image src={require('../../media/thumbnails/skate.png')} />
+        		<Image src={require('../../media/thumbnails/chicago.jpg')} />
         	</div>
         	<div className="slide-info">
         		<div className="text">
-        			<Header className='slide-header' as='h3'> URBANA SKATE PARK </Header>
-        			<p>
-        				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam elit purus, ultrices suscipit neque in, ultricies vulputate quam. Nulla vehicula.
-        			</p>
+        			<Header className='slide-header' as='h3'> CHICAGO </Header>
         		</div>
         	</div>
         </div>
         <div className="slide-container">
         	<div className="slide-background">
-        		<Image src={require('../../media/thumbnails/singapore.jpeg')} />
+        		<Image src={require('../../media/thumbnails/australia.jpg')} />
         	</div>
         	<div className="slide-info">
         		<div className="text">
-        			<Header className='slide-header' as='h3'> SINGAPORE </Header>
-        			<p>
-        				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam elit purus, ultrices suscipit neque in, ultricies vulputate quam. Nulla vehicula.
-        			</p>
+        			<Header className='slide-header' as='h3'> AUSTRALIA </Header>
         		</div>
         	</div>
         </div>

@@ -3,24 +3,41 @@ import {Table, Grid, Icon, Image, Label} from 'semantic-ui-react';
 import { Redirect } from 'react-router'
 import './PricingPage.css'
 
+import {firebaseAuth} from '../../fire.js';
+import {readPublisher, updatePubPackage} from '../../dbHandler.js';
+
 class PricingPage extends Component {
 	state = {
-		userName: '',
 		name: '',
-		password: '',
 		redirect: false,
 		packageType: '',
+		uid: '',
 	}
 
 	componentWillMount() {
-		this.setState({
-			userName: this.props.location.state && this.props.location.state.userName,
-			name: this.props.location.state && this.props.location.state.name,
-			password: this.props.location.state && this.props.location.state.password
-		})
+		this.auth = firebaseAuth().onAuthStateChanged(
+			function(user) {
+				if (user) {
+					this.setState({uid: user.uid});
+					readPublisher(this.state.uid).once('value', (snapshot) => {
+			      this.loadPublisher(snapshot.key, snapshot.val());
+			    })
+				}
+			}.bind(this)
+		);
 	}
 
+	componentWillUnmount() {
+	  // Unsubscribe.
+	  this.auth();
+	}
+
+  loadPublisher = (id, data) => {
+	  this.setState({name: data.info.name})
+  }
+
 	handleSubmit = (packageType) => {
+		updatePubPackage(this.state.uid, packageType);
 		this.setState({
 			packageType: packageType,
 			redirect: true,
@@ -28,17 +45,11 @@ class PricingPage extends Component {
 	}
 
 	render() {
-		const {userName, name, password, redirect, packageType} = this.state;
+		const {redirect} = this.state;
 		if (redirect) {
 			return (
 				<Redirect to={{
-          pathname: '/upload',
-          state: {
-          	name: name,
-          	userName: userName,
-          	password: password,
-          	packageType: packageType,
-          }
+          pathname: '/upload'
         }} />
 			)
 		}
@@ -134,6 +145,12 @@ class PricingPage extends Component {
 				      </Table.Row>
 				      <Table.Row>
 				        <Table.Cell>Curated Marketing Content</Table.Cell>
+				        <Table.Cell></Table.Cell>
+				        <Table.Cell><Icon color='green' name='checkmark' size='large' /></Table.Cell>
+				        <Table.Cell><Icon color='green' name='checkmark' size='large' /></Table.Cell>
+				      </Table.Row>
+				      <Table.Row>
+				        <Table.Cell>Custom Ad Placement</Table.Cell>
 				        <Table.Cell></Table.Cell>
 				        <Table.Cell><Icon color='green' name='checkmark' size='large' /></Table.Cell>
 				        <Table.Cell><Icon color='green' name='checkmark' size='large' /></Table.Cell>

@@ -1,12 +1,10 @@
 .explore-page-container {
+	padding: 0 !important;
+	background-color: #ECE9E1;
+	min-height: 100vh;
 	
-	.explore-page-sidebar {
-		padding: 0 !important;	
-	}
-
 	.explore-page-main-outer {
 		height: auto;
-		background-color: #ECE9E1;
 	}
 
 	.headline {

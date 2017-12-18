@@ -1,59 +1,8 @@
 import React, { Component } from 'react';
-import { Menu, Header, Input, Icon, Grid, Label, Segment, Form, TextArea, Button} from 'semantic-ui-react';
+import {Header, Segment, Form, TextArea, Button} from 'semantic-ui-react';
 import './SidePanel.css';
 
 import {writeComment} from '../../dbHandler.js';
-
-// const comments = [
-// 	{
-// 		user: 'Jane',
-// 		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque congue tempus mollis. Aliquam sodales tortor non lobortis tincidunt. Donec dictum.'
-// 	},
-// 	{
-// 		user: 'Jack',
-// 		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sit.'
-// 	},
-// 	{
-// 		user: 'Mark',
-// 		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dictum laoreet ligula, interdum molestie leo.'
-// 	},
-// 	{
-// 		user: 'Ivy',
-// 		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada suscipit neque vel malesuada. Ut ut faucibus nisi, vel ullamcorper turpis. Nullam laoreet nibh vel ex consequat mattis in mattis.'
-// 	},
-// 	{
-// 		user: 'John',
-// 		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada suscipit neque vel malesuada. Ut ut faucibus nisi, vel ullamcorper turpis. Nullam laoreet nibh vel ex consequat mattis in mattis.'
-// 	},
-// 	{
-// 		user: 'Rachel',
-// 		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada suscipit neque vel malesuada. Ut ut faucibus nisi, vel ullamcorper turpis. Nullam laoreet nibh vel ex consequat mattis in mattis.'
-// 	},
-// 	{
-// 		user: 'Sarah',
-// 		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada suscipit neque vel malesuada. Ut ut faucibus nisi, vel ullamcorper turpis. Nullam laoreet nibh vel ex consequat mattis in mattis.'
-// 	},
-// 	{
-// 		user: 'Natalie',
-// 		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada suscipit neque vel malesuada. Ut ut faucibus nisi, vel ullamcorper turpis. Nullam laoreet nibh vel ex consequat mattis in mattis.'
-// 	},
-// 	{
-// 		user: 'Caroline',
-// 		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada suscipit neque vel malesuada. Ut ut faucibus nisi, vel ullamcorper turpis. Nullam laoreet nibh vel ex consequat mattis in mattis.'
-// 	},
-// 	{
-// 		user: 'Jessie',
-// 		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada suscipit neque vel malesuada. Ut ut faucibus nisi, vel ullamcorper turpis. Nullam laoreet nibh vel ex consequat mattis in mattis.'
-// 	},
-// 	{
-// 		user: 'Emma',
-// 		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada suscipit neque vel malesuada. Ut ut faucibus nisi, vel ullamcorper turpis. Nullam laoreet nibh vel ex consequat mattis in mattis.'
-// 	},
-// 	{
-// 		user: 'Emily',
-// 		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada suscipit neque vel malesuada. Ut ut faucibus nisi, vel ullamcorper turpis. Nullam laoreet nibh vel ex consequat mattis in mattis.'
-// 	},
-// ]
 
 class CommentPanel extends Component {
 	state = {
@@ -64,7 +13,8 @@ class CommentPanel extends Component {
 
 	handleSubmit = () => {
 		const {newComment} = this.state;
-		writeComment('-KzPrfNnnR9OWIp57JE3', '-KzPrfNnnR9OWIp57JE3', 'Arjun', newComment);
+		const {pubId, commenterId, commenterName} = this.props;
+		writeComment(pubId, commenterId, commenterName, newComment);
 		this.setState({ newComment: ''})
 	}
 

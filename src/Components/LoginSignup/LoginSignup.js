@@ -1,50 +1,72 @@
 import React, { Component } from 'react';
-import {Button, Grid, Icon, Image, Label, Segment, Form} from 'semantic-ui-react';
+import {Button, Grid, Segment, Form} from 'semantic-ui-react';
 import { Redirect } from 'react-router'
 import './LoginSignup.css';
 
-import {writePublisher, writeVideo, readPublisher, readCommentsListener} from '../../dbHandler.js';
-
+import {firebaseAuth} from '../../fire.js';
+import {auth, login} from '../../auth.js';
+import {initializePublisher} from '../../dbHandler.js';
 
 class LoginSignup extends Component {
 	state = {
-		loginUsername: '',
+		uid: '',
+
+		loginEmail: '',
 		loginPassword: '',
 
 		signUpName: '',
-		signUpUserName: '',
+		signUpEmail: '',
 		signUpPassword: '',
 		signUpPasswordConfirm: '',
 		userType: '',
 
 		redirect: false,
 	}
+
+	componentWillMount() {
+		this.auth = firebaseAuth().onAuthStateChanged(
+			function(user) {
+				if (user) {
+					this.setState({uid: user.uid});
+				}
+			}.bind(this)
+		);
+	}
+
+	componentWillUnmount() {
+	  // Unsubscribe.
+	  this.auth();
+	}
 	
 	handleChange = (e, { name, value }) => this.setState({ [name]: value })
 	
 	handleLogin = () => {
-		return;
+		login(this.state.loginEmail, this.state.loginPassword)
 	}
 
 	handleSignUp = (userType) => {
-		const {loginUsername, loginPassword, signUpName, signUpUserName, signUpPassword, signUpPasswordConfirm} = this.state;
-		if (userType === 'publisher') {
+		const {signUpEmail, signUpPassword, signUpPasswordConfirm} = this.state;
+		if (signUpPassword === signUpPasswordConfirm) {
+			auth(signUpEmail, signUpPassword).then((user) => {
+				initializePublisher(user.uid, this.state.signUpName, userType);
+			});
 			this.setState({redirect: true});
 		}
 	}
 
 	render() {
-		const {loginUsername, loginPassword, signUpName, signUpUserName, signUpPassword, signUpPasswordConfirm, userType, redirect} = this.state;
-
+		const {uid, loginEmail, loginPassword, signUpName, signUpEmail, signUpPassword, signUpPasswordConfirm, redirect} = this.state;
+		if (uid !== '' && !redirect) {
+			return (
+				<Redirect to={{
+          pathname: '/video/' + uid,
+        }} />
+			)
+		}
 		if (redirect) {
 			return (
 				<Redirect to={{
           pathname: '/pricing',
-          state: {
-          	name: signUpName,
-          	userName: signUpUserName,
-          	password: signUpPassword,
-          }
         }} />
       )
 		} else {
@@ -53,11 +75,11 @@ class LoginSignup extends Component {
 					<Grid.Column width={6}>
 						<Segment className='login-container' raised textAlign='center'>
 					    <h1>Login</h1>
-					    <Form>
-					    	<Form.Input name='loginUsername' value={loginUsername} onChange={this.handleChange} label='Username' />
+					    <Form onSubmit={this.handleLogin}>
+					    	<Form.Input name='loginEmail' value={loginEmail} onChange={this.handleChange} label='Email' />
 					    	<Form.Input name='loginPassword' value={loginPassword} onChange={this.handleChange} label='Password' type='password' />
+					    	<Button className='login-button' color='blue' content='Login' icon='unlock' labelPosition='left' />
 					    </Form>
-					    <Button className='login-button' color='blue' content='Login' icon='unlock' labelPosition='left' />
 					  </Segment>
 					</Grid.Column>
 					<Grid.Column width={6}>
@@ -65,7 +87,7 @@ class LoginSignup extends Component {
 							<h1>Sign Up</h1>
 					    <Form>
 					    	<Form.Input name='signUpName' value={signUpName} onChange={this.handleChange} label='Name' />
-					    	<Form.Input name='signUpUserName' value={signUpUserName} onChange={this.handleChange} label='Username' />
+					    	<Form.Input name='signUpEmail' value={signUpEmail} onChange={this.handleChange} label='Email' />
 					    	<Form.Input name='signUpPassword' value={signUpPassword} onChange={this.handleChange} label='Password' type='password' />
 					    	<Form.Input name='signUpPasswordConfirm' value={signUpPasswordConfirm} onChange={this.handleChange} label='Confirm Password' type='password' />
 					    </Form>

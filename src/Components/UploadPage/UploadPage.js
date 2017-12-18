@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-import {Grid, Segment, Image, Button, Form} from 'semantic-ui-react';
+import {Grid, Segment, Button, Form} from 'semantic-ui-react';
 import { Redirect } from 'react-router'
 import './UploadPage.css';
 
-import fire from '../../fire.js';
-import {writePublisher} from '../../dbHandler.js';
+import {fire, firebaseAuth} from '../../fire.js';
+import {updateProfileInfo, readPublisher} from '../../dbHandler.js';
 import FileUploader from 'react-firebase-file-uploader';
 
 const options = [
-  { key: '1', text: 'University', value: 'university' },
-  { key: '2', text: 'City and Urban Life', value: 'city' },
-  { key: '3', text: 'Arts and Culture', value: 'arts' },
+  { key: '1', text: 'University', value: 'institutions' },
+  { key: '2', text: 'City and Urban Life', value: 'cities' },
+  { key: '3', text: 'Arts and Culture', value: 'media' },
   { key: '4', text: 'Nature and Wildlife', value: 'nature' },
   { key: '5', text: 'Tourism and Photography', value: 'tourism' },
   { key: '6', text: 'Bussiness and Offices', value: 'bussiness' },
@@ -18,10 +18,8 @@ const options = [
 
 class UploadPage extends Component {
 	state = {
-		userName: '',
 		name: '',
-		password: '',
-		packageType: '',
+		uid: '',
 
 		pubDescription: '',
 		pubCategory: '',
@@ -54,17 +52,31 @@ class UploadPage extends Component {
 		instagramDescription: '',
 		instagramLink: '',
 
+		pubId: '',
 		redirect: false,
 	}
 
 	componentWillMount() {
-		this.setState({
-			userName: this.props.location.state && this.props.location.state.userName,
-			name: this.props.location.state && this.props.location.state.name,
-			password: this.props.location.state && this.props.location.state.password,
-			packageType: this.props.location.state && this.props.location.state.packageType,
-		})
+		this.auth = firebaseAuth().onAuthStateChanged(
+			function(user) {
+				if (user) {
+					this.setState({uid: user.uid});
+					readPublisher(this.state.uid).once('value', (snapshot) => {
+			      this.loadPublisher(snapshot.key, snapshot.val());
+			    })
+				}
+			}.bind(this)
+		);
 	}
+
+	componentWillUnmount() {
+	  // Unsubscribe.
+	  this.auth();
+	}
+
+	loadPublisher = (id, data) => {
+	  this.setState({name: data.info.name})
+  }
 
 	handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
@@ -117,24 +129,33 @@ class UploadPage extends Component {
   };
 
   updateDataAndRedirect = () => {
-  	console.log('ello');
-  	let newPub = writePublisher(this.state);
+  	updateProfileInfo(this.state.uid, this.state);
+  	this.setState({
+  		redirect: true
+  	})
   }
 
 	render() {
+		if (this.state.redirect) {
+			return (
+				<Redirect to={{
+          pathname: '/upload/video',
+        }} />
+      )
+		}
 		return (
 			<Grid centered>
 				<Grid.Column width={7}>
 					<Segment textAlign='left'>	
 						<Form>
 							<Form.Input name='name' value={this.state.name} label='Publisher Name' placeholder='Publisher Name' onChange={this.handleChange}/>
-							<Form.TextArea label='Description' name='pubDescription' placeholder='Describe your organization...' onChange={this.handleChange}/>
+							<Form.TextArea label='Description' name='pubDescription' value={this.state.pubDescription} placeholder='Describe your organization...' onChange={this.handleChange}/>
 							<Form.Select name='pubCategory' label='Category' options={options} placeholder='Category' onChange={this.handleChange}/>
-							<Grid>
+							<Grid stackable>
 							{/* Facebook Graphic Upload*/}
 								<Grid.Column width={4}>
 										{this.state.avatarURL &&
-					            <img src={this.state.avatarURL} />
+					            <img alt='avatar' src={this.state.avatarURL} />
 					          }
 					          {!this.state.avatarURL &&
 					            	<label className='upload-container avatar'>
@@ -152,9 +173,7 @@ class UploadPage extends Component {
 					          }
 								</Grid.Column>
 								<Grid.Column width={12}>
-									<Form>
 										<Form.TextArea name='avatarDescription' value={this.state.avatarDescription} onChange={this.handleChange} label='Avatar Description' placeholder='' />
-									</Form>
 								</Grid.Column>
 							</Grid>
 						</Form>
@@ -162,11 +181,11 @@ class UploadPage extends Component {
 				</Grid.Column>
 				<Grid.Column width={7}>
 					<Segment textAlign='center'>
-						<Grid>
+						<Grid stackable>
 						{/* Facebook Graphic Upload*/}
 							<Grid.Column width={4}>
 									{this.state.facebookURL &&
-				            <img src={this.state.facebookURL} />
+				            <img alt='facebook graphic' src={this.state.facebookURL} />
 				          }
 				          {!this.state.facebookURL &&
 				            	<label className='upload-container facebook'>
@@ -192,7 +211,7 @@ class UploadPage extends Component {
 							{/* Youtube Graphic Upload*/}
 							<Grid.Column width={4}>
 								{this.state.youtubeURL &&
-			            <img src={this.state.youtubeURL} />
+			            <img alt='youtube graphic' src={this.state.youtubeURL} />
 			          }
 			          {!this.state.youtubeURL &&
 									<div className="upload-container youtube">
@@ -219,7 +238,7 @@ class UploadPage extends Component {
 							</Grid.Column>
 							<Grid.Column width={4}>
 								{this.state.facebookURL &&
-			            <img src={this.state.instagramURL} />
+			            <img alt='instagram graphic' src={this.state.instagramURL} />
 			          }
 			          {!this.state.instagramURL &&
 									<div className="upload-container instagram">
