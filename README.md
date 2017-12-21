@@ -8,9 +8,9 @@ This VR Platform (Dragonfly) is one of the main projects for CS468. The goal is 
 
 ## Stack 
 
-- ** Backend ** : [Google Firebase](https://firebase.google.com/) 
-- ** Frontend ** : [React](https://reactjs.org/)
-- ** UI Kit ** : [Semantic](https://react.semantic-ui.com/)
+- **Backend** : [Google Firebase](https://firebase.google.com/) 
+- **Frontend** : [React](https://reactjs.org/)
+- **UI Kit** : [Semantic](https://react.semantic-ui.com/)
 
 ## Firebase 
 
